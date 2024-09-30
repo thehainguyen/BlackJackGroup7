@@ -14,12 +14,14 @@ import java.util.Collections;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @moffied by The Hai Nguyen - 991745555 - September 30, 2024
  */
 public class GroupOfCards {
 
     //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
+    private ArrayList<Card> cards = new ArrayList<>();
     private int size;//the size of the grouping
+    private int totalScore;
 
     public GroupOfCards(int size) {
         this.size = size;
@@ -32,6 +34,16 @@ public class GroupOfCards {
      */
     public ArrayList<Card> getCards() {
         return cards;
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+
+    public void addCard(NormalCard card) {
+        setSize(getSize() + 1);
+        cards.add(card);
+        this.totalScore += card.getValue();
     }
 
     public void shuffle() {
@@ -50,6 +62,15 @@ public class GroupOfCards {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public void reset() {
+        this.totalScore = 0;
+        this.cards = new ArrayList<>();
     }
 
 }//end class
