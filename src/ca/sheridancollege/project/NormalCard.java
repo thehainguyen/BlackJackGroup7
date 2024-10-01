@@ -33,6 +33,10 @@ public class NormalCard extends Card{
         return value.value;
     }
 
+    public void setValue(int value) {
+        this.value.value = value;
+    }
+
     @Override
     public String toString() {
         return this.value + " of " + this.suit;

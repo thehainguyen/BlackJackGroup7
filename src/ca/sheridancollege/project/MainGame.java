@@ -20,6 +20,20 @@ public class MainGame extends Game {
         this.dealer.start(this.player);
         displayPlayerCards();
 
+        // Check if player has blackjack
+        if (this.player.getScore() == 21) {
+            System.out.println("Blackjack! You win!");
+            this.player.win();
+            return;
+        }
+
+        // Check if dealer has blackjack
+        if (this.dealer.getScore() == 21) {
+            System.out.println("Dealer has Blackjack! You lose.");
+            this.player.lose();
+            return;
+        }
+
         // Player's turn
         while (this.player.getScore() < 21) {
             // Ask player if they want to hit or stand
@@ -43,7 +57,6 @@ public class MainGame extends Game {
         // If player's score is above 21, declare winner
         if (this.player.getScore() > 21) {
             System.out.println("You Bust!");
-            declareWinner(this.dealer);
             this.player.lose();
             return;
         }
@@ -57,8 +70,8 @@ public class MainGame extends Game {
 
         if (this.dealer.getScore() > 21) {
             System.out.println("Dealer Busts!");
-            this.player.win();
             declareWinner(this.player);
+            this.player.win();
         } else {
             displayPlayerCards();
             this.player.lose();
@@ -102,6 +115,10 @@ public class MainGame extends Game {
     public void reset() {
         this.dealer.reset();
         this.player.reset();
+    }
+
+    public boolean isPlayerBlackjack(Player player) {
+        return player.getScore() == 21;
     }
 
     /**

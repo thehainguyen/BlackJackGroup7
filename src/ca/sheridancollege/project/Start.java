@@ -20,7 +20,7 @@ public class Start {
 
         // Start the game
         String userAnswer = "yes";
-        while (userAnswer.equals("yes") || player.getChips() > 0) {
+        while (userAnswer.equals("yes") && player.getChips() > 0) {
             // Reset the game
             game.reset();
             
@@ -55,6 +55,10 @@ public class Start {
 
         if (player.getChips() == 0) {
             System.out.println("You ran out of chips!");
+        } else if (player.getChips() < 1000){
+            System.out.println("You lost" + (1000 - player.getChips()) + " chips!");
+        } else {
+            System.out.println("You won " + (player.getChips() - 1000) + " chips!");
         }
 
         System.out.println("Thanks for playing!");
