@@ -24,12 +24,12 @@ public class Dealer extends Player {
         NormalCard card = getRandomCard();
 
         // Check if the card is an Ace
-        if (card.getValue() == 1) {
+        if (card.getValue() == 1 || card.getValue() == 11) {
             // Instantiate the scanner
             Scanner scanner = new Scanner(System.in);
 
             // Ask the player if they want an Ace as 1 or 11
-            System.out.println("An Ace was dealt. Do you want it as 1 or 11?");
+            System.out.print("An Ace was dealt to you. Please choose the value you want (1 or 11): ");
             int choice = scanner.nextInt();
             
             // Set the value of the card

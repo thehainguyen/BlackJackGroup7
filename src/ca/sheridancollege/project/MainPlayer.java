@@ -10,11 +10,13 @@ public class MainPlayer extends Player {
 
     public void win() {
         System.out.println(this.getName() + " won " + this.getBet() + " chips!");
+        System.out.println();
         this.setChips(this.getChips() + this.getBet());
     }
 
     public void lose() {
         System.out.println(this.getName() + " lost " + this.getBet() + " chips!");
+        System.out.println();
         this.setChips(this.getChips() - this.getBet());
     }
 
