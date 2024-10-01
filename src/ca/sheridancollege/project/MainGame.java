@@ -154,9 +154,10 @@ public class MainGame extends Game {
     public void displayResult() {
         // Display the result
         if (this.player.getChips() < 1000){
-            System.out.println("You lost" + (1000 - player.getChips()) + " chips!");
+            System.out.println("You lost total of " + (1000 - player.getChips()) + " chips!");
         } else {
-            System.out.println("You won " + (player.getChips() - 1000) + " chips!");
+            System.out.println("Congratulations! " + player.getName());
+            System.out.println("You won total of " + (player.getChips() - 1000) + " chips!");
         }
     }
     
