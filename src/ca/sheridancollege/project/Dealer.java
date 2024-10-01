@@ -30,7 +30,6 @@ public class Dealer extends Player {
 
             // Ask the player if they want an Ace as 1 or 11
             System.out.println("An Ace was dealt. Do you want it as 1 or 11?");
-            System.out.println("Enter 1 for 1 or 11 for 11: ");
             int choice = scanner.nextInt();
             
             // Set the value of the card
