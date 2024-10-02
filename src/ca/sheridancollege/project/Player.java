@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public abstract class Player {
 
     private String name; //the unique name for this player
-    private GroupOfCards cards; // the cards that this player holds
+    private HandOfCards cards; // the cards that this player holds
 
     /**
      * A constructor that allows you to set the player's unique ID
@@ -26,7 +26,7 @@ public abstract class Player {
      */
     public Player(String name) {
         this.name = name;
-        this.cards = new GroupOfCards();
+        this.cards = new HandOfCards();
     }
 
     /**

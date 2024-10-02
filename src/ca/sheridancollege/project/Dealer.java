@@ -10,7 +10,7 @@ public class Dealer extends Player {
     }
     
     // Dealer plays the game
-    public void play(Player player, GroupOfCards deckOfCards) {
+    public void play(Player player, DeckOfCards deckOfCards) {
         // Get the player's score
         int playerScore = player.getScore();
 
@@ -26,7 +26,7 @@ public class Dealer extends Player {
     }
 
     // At the start of the game, dealer will deal 2 cards to the player and 2 cards to the dealer
-    public void start(MainPlayer player, GroupOfCards deckGroupOfCards) {
+    public void start(MainPlayer player, DeckOfCards deckGroupOfCards) {
         //Deal 2 cards to the player
         dealToPlayer(player, deckGroupOfCards);
         dealToPlayer(player, deckGroupOfCards);
@@ -40,9 +40,9 @@ public class Dealer extends Player {
     }
 
     // Deal a card to the player
-    public void dealToPlayer(MainPlayer player, GroupOfCards deckGroupOfCards) {
+    public void dealToPlayer(MainPlayer player, DeckOfCards deckGroupOfCards) {
         // Get the first card from the deck and remove it from the deck
-        NormalCard card = (NormalCard) deckGroupOfCards.getCards().removeFirst();
+        NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
 
         // Check if the card is an Ace
         if (card.getValue() == 1 || card.getValue() == 11) {
@@ -51,13 +51,13 @@ public class Dealer extends Player {
 
             // Ask the player if they want an Ace as 1 or 11
             System.out.print("An Ace was dealt to you. Please choose the value you want (1 or 11): ");
-            int choice = scanner.nextInt();
+            int choice = scanner.nextInt(); // Get the player's choice
             
             // Set the value of the card
             switch (choice) {
-                case 1 -> card.setValue(1);
-                case 11 -> card.setValue(11);
-                default -> card.setValue(1);
+                case 1 -> card.setValue(1); // If the player chooses 1, set the value to 1
+                case 11 -> card.setValue(11); // If the player chooses 11, set the value to 11
+                default -> card.setValue(1); // If the player does not choose 1 or 11, set the value to 1
             }
         }
 
@@ -69,9 +69,9 @@ public class Dealer extends Player {
     }
     
     // Deal a card to the dealer
-    public void dealToSelf(GroupOfCards deckGroupOfCards) {
+    public void dealToSelf(DeckOfCards deckGroupOfCards) {
         // Get the first card from the deck and remove it from the deck
-        NormalCard card = (NormalCard) deckGroupOfCards.getCards().removeFirst();
+        NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
 
         // Check if the card is an Ace
         if (card.getValue() == 1 || card.getValue() == 11) {

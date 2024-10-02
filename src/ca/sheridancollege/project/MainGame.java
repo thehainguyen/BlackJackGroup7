@@ -2,25 +2,23 @@ package ca.sheridancollege.project;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import ca.sheridancollege.project.NormalCard.Suit;
-import ca.sheridancollege.project.NormalCard.Value;
 
 public class MainGame extends Game {
     private Dealer dealer; // Dealer object
     private MainPlayer player; // Player object
-    private GroupOfCards deckOfCards; // Deck of cards
+    private DeckOfCards deckOfCards = new DeckOfCards(); // Deck of cards
     
     public MainGame(String name, Dealer dealer, MainPlayer player) {
         super(name); // Set the name of the game
         this.dealer = dealer;
         this.player = player;
-        this.deckOfCards = createDeckOfCards(); //Create the deck of cards
+        this.deckOfCards.fullfillDeck(); //Create the deck of cards
     }
 
     // Start the game
     @Override
     public void play() {
-        // Dealer deals  2 cards to player and dealer
+        // Dealer deals 2 cards to player and dealer
         this.dealer.start(this.player, this.deckOfCards);
         displayPlayerCards(); // Display player's cards
 
@@ -62,9 +60,6 @@ public class MainGame extends Game {
 
         // Declare winner
         declareWinner();
-
-        // Reset the deck of cards
-        this.deckOfCards = createDeckOfCards();
     }
 
     // Declare winner
@@ -103,25 +98,6 @@ public class MainGame extends Game {
         this.player.setChips(this.player.getChips() - this.player.getBet()); // Subtract bet from player's chips
     }
 
-    // Create the deck of cards
-    public GroupOfCards createDeckOfCards() {
-        // Create a new deck of cards
-        GroupOfCards deckOfCards = new GroupOfCards();
-
-        // Add 52 cards to the deck
-        for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < 13; j++) {
-                deckOfCards.addCard(new NormalCard(Suit.values()[i], Value.values()[j]));
-            }
-        }
-
-        // Shuffle the deck
-        deckOfCards.shuffle();
-
-        // Return the deck of cards
-        return deckOfCards;
-    }
-
     // Check if player or dealer has blackjack
     public boolean isBlackJack() {
         // Both player and dealer have blackjack
@@ -148,6 +124,31 @@ public class MainGame extends Game {
         return false;
     }
 
+    // Ask the player to bet
+    public void askPlayerBet() {
+        // Initialise the Scanner to read user input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Ask the player to bet
+        System.out.println("You have " + player.getChips() + " chips.");
+        System.out.print("PLease enter your bet: ");
+        // Get the player's bet
+        int bet = scanner.nextInt();
+        
+        // Check if the player has enough chips
+        while (bet > player.getChips()) {
+            // Ask the player to bet again
+            System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount.");
+            bet = scanner.nextInt();
+        }
+
+        // Print a blank line
+        System.out.println();
+        
+        // Set the player's bet
+        player.setBet(bet);
+    }
+
     // Ask player to hit or stand
     public String askPlayerHitOrStand() {
         // Initialise the Scanner to read user input
@@ -165,6 +166,28 @@ public class MainGame extends Game {
 
         // Return the user's choice
         return userChoice;
+    }
+
+    // Ask player if they want to play again
+    public String askPlayerToPLayAgain() {
+        // Initialise the Scanner to read user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask if the player wants to play again
+        System.out.print("Do you want to play again? (Yes/No): ");
+        String userAnswer = scanner.next().toLowerCase();
+
+        // Check for valid input
+        while (!userAnswer.equals("yes") && !userAnswer.equals("no")) {
+            System.out.println("Invalid input. Please enter Yes or No: ");
+            userAnswer = scanner.next().toLowerCase();
+        }
+
+        // Print a blank line
+        System.out.println();
+        
+        // Return the user's answer
+        return userAnswer;
     }
 
     // Display player's cards and dealer's cards
@@ -204,42 +227,17 @@ public class MainGame extends Game {
         System.out.println("-".repeat(100));
         System.out.println();
     }
-    
-    // Ask the player to bet
-    public void askPlayerBet() {
-        // Initialise the Scanner to read user input
-        Scanner scanner = new Scanner(System.in);
-
-        // Ask the player to bet
-        System.out.println("You have " + player.getChips() + " chips.");
-        System.out.print("PLease enter your bet: ");
-        // Get the player's bet
-        int bet = scanner.nextInt();
-
-        // Check if the player has enough chips
-        while (bet > player.getChips()) {
-            // Ask the player to bet again
-            System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount.");
-            bet = scanner.nextInt();
-        }
-
-        // Print a blank line
-        System.out.println();
-
-        // Set the player's bet
-        player.setBet(bet);
-    }
 
     // Display the result
     public void displayResult() {
         // Display the result
         if (this.player.getChips() == 0) {
-            System.out.println("You lost total of " + player.getBet() + " chips!");
+            System.out.println("You lost total of " + player.getBet() + " chips!"); // Player lost all chips
         } else if (this.player.getChips() < 1000){
-            System.out.println("You lost total of " + (1000 - player.getChips()) + " chips!");
+            System.out.println("You lost total of " + (1000 - player.getChips()) + " chips!"); // Player lost less than 1000 chips
         } else {
             System.out.println("Congratulations! " + player.getName());
-            System.out.println("You won total of " + (player.getChips() - 1000) + " chips!");
+            System.out.println("You won total of " + (player.getChips() - 1000) + " chips!"); // Player won
         }
     }
     
