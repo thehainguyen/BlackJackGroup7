@@ -1,7 +1,5 @@
 package ca.sheridancollege.project;
 
-import java.util.ArrayList;
-
 public class HandOfCards extends GroupOfCards {
     // The total score of the group of cards
     private int totalScore = 0;

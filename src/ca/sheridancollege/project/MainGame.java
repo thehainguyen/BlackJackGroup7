@@ -87,7 +87,7 @@ public class MainGame extends Game {
         System.out.println("You win!");
         System.out.println(this.getName() + " won " + this.player.getBet() + " chips!");
         System.out.println();
-        this.player.setChips(this.player.getChips() + this.player.getBet()); // Add bet to player's chips
+        this.player.setChips(this.player.getChips() + this.player.getBet()*2); // Add bet to player's chips
     }
 
     // Declare player lose
@@ -138,7 +138,7 @@ public class MainGame extends Game {
         // Check if the player has enough chips
         while (bet > player.getChips()) {
             // Ask the player to bet again
-            System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount.");
+            System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount: ");
             bet = scanner.nextInt();
         }
 
@@ -221,9 +221,6 @@ public class MainGame extends Game {
         }
 
         System.out.println(String.join(", ", cards)); //Display the dealer's cards separated by commas
-
-        // Remove the ArrayList
-
 
         // Display dealer's score   
         System.out.println("Dealer's score: " + dealer.getScore());
