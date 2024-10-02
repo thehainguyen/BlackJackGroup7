@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class MainGame extends Game {
     private Dealer dealer; // Dealer object
     private MainPlayer player; // Player object
-    private DeckOfCards deckOfCards = new DeckOfCards(); // Deck of cards
+    private DeckOfCards deckOfCards; // Deck of cards
     
     public MainGame(String name, Dealer dealer, MainPlayer player) {
         super(name); // Set the name of the game
         this.dealer = dealer;
         this.player = player;
-        this.deckOfCards.fullfillDeck(); //Create the deck of cards
+        this.deckOfCards = new DeckOfCards(); //Create the deck of cards
     }
 
     // Start the game
@@ -196,15 +196,15 @@ public class MainGame extends Game {
         System.out.println("-".repeat(100));
 
         // Create an ArrayList to store the player's cards
-        ArrayList<String> Cards = new ArrayList<>();
+        ArrayList<String> cards = new ArrayList<>();
 
         // Display player's cards
         System.out.print("Your cards: ");
         for (Card card : player.getCards()) {
-            Cards.add(card.toString()); // Add player's cards to the ArrayList
+            cards.add(card.toString()); // Add player's cards to the ArrayList
         }
 
-        System.out.println(String.join(", ", Cards)); // Display the player's cards separated by commas
+        System.out.println(String.join(", ", cards)); // Display the player's cards separated by commas
 
         // Display player's score
         System.out.println("Your score: " + player.getScore());
@@ -213,14 +213,17 @@ public class MainGame extends Game {
         System.out.println("-".repeat(30));
 
         // Display dealer's cards
-        Cards.clear(); // Clear the ArrayList
+        cards.clear(); // Clear the ArrayList
 
         System.out.print("Dealer's cards: ");
         for (Card card : dealer.getCards()) {
-            Cards.add(card.toString()); // Add dealer's cards to the ArrayList
+            cards.add(card.toString()); // Add dealer's cards to the ArrayList
         }
 
-        System.out.println(String.join(", ", Cards)); //Display the dealer's cards separated by commas
+        System.out.println(String.join(", ", cards)); //Display the dealer's cards separated by commas
+
+        // Remove the ArrayList
+
 
         // Display dealer's score   
         System.out.println("Dealer's score: " + dealer.getScore());

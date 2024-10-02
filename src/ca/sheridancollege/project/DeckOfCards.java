@@ -6,6 +6,11 @@ import ca.sheridancollege.project.NormalCard.Value;
 import java.util.ArrayList;
 
 public class DeckOfCards extends GroupOfCards {
+    // Constructor
+    public DeckOfCards() {
+        fullfillDeck();
+    }
+
     // Refill the deck
     public void fullfillDeck() {
         // Get the cards
