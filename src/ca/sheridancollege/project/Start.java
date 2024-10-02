@@ -34,12 +34,12 @@ public class Start {
             // Play the game
             game.play();
 
-            // Ask if the player wants to play again
+            // If the player has no chips, exit the game
             if (player.getChips() == 0) {
-                System.out.println("You are out of chips. Thanks for playing!");
                 break;
             }
             
+            // Ask if the player wants to play again
             userAnswer = isValidInput();
         }
 
@@ -66,6 +66,10 @@ public class Start {
             userAnswer = scanner.next().toLowerCase();
         }
 
+        // Print a blank line
+        System.out.println();
+        
+        // Return the user's answer
         return userAnswer;
     }
 }

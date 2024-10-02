@@ -1,23 +1,28 @@
 package ca.sheridancollege.project;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
-public class MainGame extends Game {
+import ca.sheridancollege.project.NormalCard.Suit;
+import ca.sheridancollege.project.NormalCard.Value;
 
+public class MainGame extends Game {
     private Dealer dealer;
     private MainPlayer player;
-    private Scanner scanner = new Scanner(System.in);
+    private GroupOfCards deckOfCards;
     
     public MainGame(String name, Dealer dealer, MainPlayer player) {
         super(name);
         this.dealer = dealer;
         this.player = player;
+        this.deckOfCards = createDeckOfCards();
     }
 
     @Override
     public void play() {
         // Start the game
-        this.dealer.start(this.player);
+        this.dealer.start(this.player, this.deckOfCards);
         displayPlayerCards();
 
         // Check if player or dealer has blackjack
@@ -32,7 +37,7 @@ public class MainGame extends Game {
 
             // If player hits, deal another card
             if (userChoice.equals("hit")) {
-                this.dealer.dealToPlayer(this.player);
+                this.dealer.dealToPlayer(this.player, this.deckOfCards);
                 displayPlayerCards();
             } else {
                 break; // Player stands, end turn
@@ -47,20 +52,32 @@ public class MainGame extends Game {
         }
 
         // Dealer's turn
-        int playerScore = this.player.getScore();
+        System.out.println();
+        System.out.println("Dealer's turn...");
 
-        // Dealer will hit until dealer's score is above the player's score
-        while (this.dealer.getScore() < playerScore) {
-            this.dealer.dealToSelf();
-            displayPlayerCards();
-        }
+        // Dealer's turn
+        this.dealer.play(this.player, this.deckOfCards);
+
+        // Display player's cards and dealer's cards
+        displayPlayerCards();
 
         // Declare winner
         declareWinner();
+
+        // Reset the deck of cards
+        this.deckOfCards = createDeckOfCards();
     }
 
     @Override
     public void declareWinner() {
+        // If dealer's score is above 21, declare winner
+        if (this.dealer.getScore() > 21) {
+            System.out.println("Dealer Bust!");
+            this.player.win();
+            return;
+        }
+
+        // Compare scores
         if (this.player.getScore() > this.dealer.getScore()) {
             System.out.println("You win!");
             this.player.win();
@@ -70,6 +87,22 @@ public class MainGame extends Game {
         } else {
             System.out.println("It's a tie!");
         }
+    }
+
+    public GroupOfCards createDeckOfCards() {
+        // Create a new deck of cards
+        GroupOfCards deckOfCards = new GroupOfCards(0);
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 1; j < 13; j++) {
+                deckOfCards.addCard(new NormalCard(Suit.values()[i], Value.values()[j]));
+            }
+        }
+
+        // Shuffle the deck
+        Collections.shuffle(deckOfCards.getCards());
+
+        return deckOfCards;
     }
 
     public boolean isBlackJack() {
@@ -97,6 +130,9 @@ public class MainGame extends Game {
     }
 
     public String askPlayerHitOrStand() {
+        // Initialise the Scanner to read user input
+        Scanner scanner = new Scanner(System.in);
+
         System.out.print("Hit or Stand?: ");
         String userChoice = scanner.next().toLowerCase();
         // Check for valid input
@@ -137,6 +173,9 @@ public class MainGame extends Game {
     
 
     public void askPlayerBet() {
+        // Initialise the Scanner to read user input
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("You have " + player.getChips() + " chips.");
         System.out.print("PLease enter your bet: ");
         int bet = scanner.nextInt();
@@ -146,6 +185,8 @@ public class MainGame extends Game {
             System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount.");
             bet = scanner.nextInt();
         }
+
+        System.out.println();
 
         // Set the player's bet
         player.setBet(bet);
@@ -175,5 +216,13 @@ public class MainGame extends Game {
 
     public Dealer getDealer() {
         return this.dealer;
+    }
+
+    public GroupOfCards getDeckOfCards() {
+        return deckOfCards;
+    }
+
+    public void setDeckOfCards(GroupOfCards deckOfCards) {
+        this.deckOfCards = deckOfCards;
     }
 }

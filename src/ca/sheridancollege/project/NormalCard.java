@@ -41,4 +41,25 @@ public class NormalCard extends Card{
     public String toString() {
         return this.value + " of " + this.suit;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        final NormalCard other = (NormalCard) obj;
+        if (this.suit != other.getSuit()) {
+            return false;
+        }
+
+        if (this.value.value != other.getValue()) {
+            return false;
+        }
+        
+        return true;
+    }
 }

@@ -1,27 +1,43 @@
 package ca.sheridancollege.project;
 
-import java.util.Random;
 import java.util.Scanner;
-
-import ca.sheridancollege.project.NormalCard.Suit;
-import ca.sheridancollege.project.NormalCard.Value;
 
 public class Dealer extends Player {
 
     public Dealer() {
         super("Dealer");
     }
+    
+    public void play(Player player, GroupOfCards deckOfCards) {
+        // Dealer's turn
+        int playerScore = player.getScore();
 
-    public void start(MainPlayer player) {
-        //Deal 2 cards to the player
-        for (int i = 0; i < 2; i++) {
-            dealToPlayer(player);
-            dealToSelf();
+        // Dealer will hit until dealer's score is above the player's score
+        while (getScore() < playerScore) {
+            dealToSelf(deckOfCards);
+        }
+
+        // If dealer's score is equal to or above 16, dealer will stand
+        if (getScore() == playerScore && getScore() <16) {
+            dealToSelf(deckOfCards);
         }
     }
 
-    public void dealToPlayer(MainPlayer player) {
-        NormalCard card = getRandomCard();
+    public void start(MainPlayer player, GroupOfCards deckGroupOfCards) {
+        //Deal 2 cards to the player
+        dealToPlayer(player, deckGroupOfCards);
+        dealToPlayer(player, deckGroupOfCards);
+
+        System.out.println();
+        
+        //Deal 2 cards to the dealer
+        dealToSelf(deckGroupOfCards);
+        dealToSelf(deckGroupOfCards);
+    }
+
+    public void dealToPlayer(MainPlayer player, GroupOfCards deckGroupOfCards) {
+        // Get the first card from the deck and remove it from the deck
+        NormalCard card = (NormalCard) deckGroupOfCards.getCards().removeFirst();
 
         // Check if the card is an Ace
         if (card.getValue() == 1 || card.getValue() == 11) {
@@ -41,14 +57,27 @@ public class Dealer extends Player {
         }
 
         player.addCard(card);
+        
+        // Display the card
+        System.out.println("You got: " + card.toString());
     }
     
-    public void dealToSelf() {
-        addCard(getRandomCard());
-    }
+    public void dealToSelf(GroupOfCards deckGroupOfCards) {
+        // Get the first card from the deck and remove it from the deck
+        NormalCard card = (NormalCard) deckGroupOfCards.getCards().removeFirst();
 
-    public NormalCard getRandomCard() {
-        Random rand = new Random();
-        return new NormalCard(Suit.values()[rand.nextInt(4)], Value.values()[rand.nextInt(13)]);
+        // Check if the card is an Ace
+        if (card.getValue() == 1 || card.getValue() == 11) {
+            // If score is less than 11, set the value to 11
+            if (this.getScore() < 11) { 
+                card.setValue(11);
+            }
+        }
+
+        // Display the card
+        System.out.println("The Dealer got: " + card.toString());
+
+        // Add the card to the dealer's hand
+        addCard(card);
     }
 }
