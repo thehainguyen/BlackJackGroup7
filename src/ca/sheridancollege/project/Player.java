@@ -45,18 +45,22 @@ public abstract class Player {
         this.name = name;
     }
 
+    // Add a card to the player's hand
     public void addCard(NormalCard card) {
         cards.addCard(card);
     }
 
+    // Get the group of cards from the player
     public ArrayList<Card> getCards() {
         return cards.getCards();
     }       
 
+    // Get the player's score
     public int getScore() {
         return cards.getTotalScore();
     }
 
+    // Reset the player cards
     public void reset() {
         this.cards.reset();
     }

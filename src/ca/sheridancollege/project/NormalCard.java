@@ -1,13 +1,12 @@
 package ca.sheridancollege.project;
 
 public class NormalCard extends Card{
+    // Card Suits
     public enum Suit {
-        SPADES,
-        HEARTS,
-        CLUBS,
-        DIAMONDS
+        SPADES, HEARTS, CLUBS, DIAMONDS
     }
 
+    // Card Values
     public enum Value {
         ACE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(10), QUEEN(10), KING(10);
         
@@ -17,14 +16,15 @@ public class NormalCard extends Card{
         }
     }
 
-    private Suit suit;
-    private Value value;
+    private Suit suit; // Card Suit
+    private Value value; // Card Value
 
     public NormalCard(Suit suit, Value value) {
         this.suit = suit;
         this.value = value;
     }
     
+    // Getters and Setters
     public Suit getSuit() {
         return suit;
     }
@@ -40,26 +40,5 @@ public class NormalCard extends Card{
     @Override
     public String toString() {
         return this.value + " of " + this.suit;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        
-        final NormalCard other = (NormalCard) obj;
-        if (this.suit != other.getSuit()) {
-            return false;
-        }
-
-        if (this.value.value != other.getValue()) {
-            return false;
-        }
-        
-        return true;
     }
 }

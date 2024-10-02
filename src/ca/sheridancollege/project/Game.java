@@ -11,7 +11,6 @@ package ca.sheridancollege.project;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
- * @modified by The Hai Nguyen - 991745555 - September 30, 2024
  */
 public abstract class Game {
 

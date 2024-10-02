@@ -1,25 +1,17 @@
 package ca.sheridancollege.project;
 
 public class MainPlayer extends Player {
+    // Player's chips
     private int chips = 1000;
+    // Player's bet
     private int bet = 0;
 
     public MainPlayer(String name) {
+        // Set the name of the player
         super(name);
     }
 
-    public void win() {
-        System.out.println(this.getName() + " won " + this.getBet() + " chips!");
-        System.out.println();
-        this.setChips(this.getChips() + this.getBet());
-    }
-
-    public void lose() {
-        System.out.println(this.getName() + " lost " + this.getBet() + " chips!");
-        System.out.println();
-        this.setChips(this.getChips() - this.getBet());
-    }
-
+    // Chips getter and setter
     public int getChips() {
         return chips;
     }
@@ -28,6 +20,7 @@ public class MainPlayer extends Player {
         this.chips = chips;
     }
 
+    // Bet getter and setter
     public int getBet() {
         return bet;
     }
