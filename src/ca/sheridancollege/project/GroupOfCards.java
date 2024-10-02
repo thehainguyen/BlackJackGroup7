@@ -20,12 +20,8 @@ public class GroupOfCards {
 
     //The group of cards, stored in an ArrayList
     private ArrayList<Card> cards = new ArrayList<>();
-    private int size;//the size of the grouping
+    // The total score of the group of cards
     private int totalScore;
-
-    public GroupOfCards(int size) {
-        this.size = size;
-    }
 
     /**
      * A method that will get the group of cards as an ArrayList
@@ -36,41 +32,25 @@ public class GroupOfCards {
         return cards;
     }
 
-    public void setCards(ArrayList<Card> cards) {
-        this.cards = cards;
-    }
-
+    // Add a card to the group
     public void addCard(NormalCard card) {
-        setSize(getSize() + 1);
         cards.add(card);
         this.totalScore += card.getValue();
     }
 
+    // Shuffle the cards
     public void shuffle() {
         Collections.shuffle(cards);
     }
 
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
-    }
-
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
-    }
-
+    // Get the total score
     public int getTotalScore() {
         return totalScore;
     }
 
+    // Reset 
     public void reset() {
         this.totalScore = 0;
         this.cards = new ArrayList<>();
     }
-
-}//end class
+}

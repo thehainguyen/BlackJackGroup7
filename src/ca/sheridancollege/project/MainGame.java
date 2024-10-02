@@ -1,6 +1,5 @@
 package ca.sheridancollege.project;
 
-import java.util.Collections;
 import java.util.Scanner;
 
 import ca.sheridancollege.project.NormalCard.Suit;
@@ -90,7 +89,7 @@ public class MainGame extends Game {
 
     public GroupOfCards createDeckOfCards() {
         // Create a new deck of cards
-        GroupOfCards deckOfCards = new GroupOfCards(0);
+        GroupOfCards deckOfCards = new GroupOfCards();
 
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j < 13; j++) {
@@ -99,7 +98,7 @@ public class MainGame extends Game {
         }
 
         // Shuffle the deck
-        Collections.shuffle(deckOfCards.getCards());
+        deckOfCards.shuffle();
 
         return deckOfCards;
     }

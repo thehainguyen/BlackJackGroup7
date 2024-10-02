@@ -26,7 +26,7 @@ public abstract class Player {
      */
     public Player(String name) {
         this.name = name;
-        this.cards = new GroupOfCards(2);
+        this.cards = new GroupOfCards();
     }
 
     /**
