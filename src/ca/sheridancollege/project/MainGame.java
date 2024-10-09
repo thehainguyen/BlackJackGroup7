@@ -243,8 +243,8 @@ public class MainGame extends Game {
     
     // Reset the game
     public void reset() {
-        this.dealer.reset();
-        this.player.reset();
+        this.dealer.releaseCards();
+        this.player.releaseCards();
     }
 
     // Player getter

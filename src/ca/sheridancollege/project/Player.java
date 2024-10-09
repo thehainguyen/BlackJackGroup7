@@ -61,7 +61,7 @@ public abstract class Player {
     }
 
     // Reset the player cards
-    public void reset() {
+    public void releaseCards() {
         this.cards.reset();
     }
 }
