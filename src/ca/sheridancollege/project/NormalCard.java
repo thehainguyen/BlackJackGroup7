@@ -28,7 +28,8 @@ public class NormalCard extends Card{
     public Suit getSuit() {
         return suit;
     }
-    
+
+    @Override
     public int getValue() {
         return value.value;
     }

@@ -46,7 +46,7 @@ public abstract class Player {
     }
 
     // Add a card to the player's hand
-    public void addCard(NormalCard card) {
+    public void addCard(Card card) {
         cards.addCard(card);
     }
 

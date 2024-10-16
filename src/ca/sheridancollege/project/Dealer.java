@@ -26,7 +26,7 @@ public class Dealer extends Player {
     }
 
     // At the start of the game, dealer will deal 2 cards to the player and 2 cards to the dealer
-    public void start(MainPlayer player, DeckOfCards deckGroupOfCards) {
+    public void start(Player player, DeckOfCards deckGroupOfCards) {
         //Deal 2 cards to the player
         dealToPlayer(player, deckGroupOfCards);
         dealToPlayer(player, deckGroupOfCards);
@@ -40,9 +40,9 @@ public class Dealer extends Player {
     }
 
     // Deal a card to the player
-    public void dealToPlayer(MainPlayer player, DeckOfCards deckGroupOfCards) {
+    public void dealToPlayer(Player player, DeckOfCards deckGroupOfCards) {
         // Get the first card from the deck and remove it from the deck
-        NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
+        Card card = deckGroupOfCards.takeACard();
 
         // Check if the card is an Ace
         if (card.getValue() == 1 || card.getValue() == 11) {

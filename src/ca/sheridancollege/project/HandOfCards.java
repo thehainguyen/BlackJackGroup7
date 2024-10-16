@@ -5,7 +5,7 @@ public class HandOfCards extends GroupOfCards {
     private int totalScore = 0;
 
     // Add a card to the group
-    public void addCard(NormalCard card) {
+    public void addCard(Card card) {
         getCards().add(card);
         this.totalScore += card.getValue();
     }
