@@ -8,8 +8,7 @@ public class Start {
         Scanner scanner = new Scanner(System.in);
 
         // Get the name of the player
-        System.out.print("Enter your name: ");
-        String name = scanner.nextLine();
+        String name = Prompter.askPlayerName();
 
         // Welcome the player
         System.out.println("Welcome to Blackjack, " + name + "!");
@@ -26,7 +25,7 @@ public class Start {
         String userAnswer = "yes";
         while (userAnswer.equals("yes")) {
             // Ask the player to bet
-            game.askPlayerBet();
+            Prompter.askPlayerBet(player);
 
             // Play the game
             game.play();
@@ -40,11 +39,11 @@ public class Start {
             game.reset();
             
             // Ask if the player wants to play again
-            userAnswer = game.askPlayerToPLayAgain();
+            userAnswer =Prompter.askPlayerToPLayAgain();
         }
 
         // Display the result
-        game.displayResult();
+        Displayer.displayResult(player);
 
         // Exit the game
         System.out.println();
