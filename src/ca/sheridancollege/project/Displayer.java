@@ -76,4 +76,9 @@ public class Displayer {
         System.out.println("Sorry, " + player.getName());
         System.out.println("You lose " + player.getBet() + " chips!");
     }
+
+    // Display player's chips
+    public static void displayChips(MainPlayer player) {
+        System.out.println("You have " + player.getChips() + " chips.");
+    }
 }

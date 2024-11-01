@@ -1,7 +1,5 @@
 package ca.sheridancollege.project;
 
-import java.util.Scanner;
-
 public class MainGame extends Game {
     private Dealer dealer; // Dealer object
     private MainPlayer player; // Player object

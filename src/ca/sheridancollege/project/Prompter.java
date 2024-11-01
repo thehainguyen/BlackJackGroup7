@@ -39,6 +39,9 @@ public class Prompter {
 
     // Ask player to bet
     public static void askPlayerBet(MainPlayer player) {
+        // Display chips
+        Displayer.displayChips(player);
+
         // Ask player to bet
         System.out.print("Enter your bet: ");
         int bet = scanner.nextInt();
