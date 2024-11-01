@@ -14,6 +14,14 @@ public class NormalCard extends Card{
         Value(int value) {
             this.value = value;
         }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
     }
 
     private Suit suit; // Card Suit
@@ -34,8 +42,9 @@ public class NormalCard extends Card{
         return value.value;
     }
 
+    @Override
     public void setValue(int value) {
-        this.value.value = value;
+        this.value.setValue(value);
     }
 
     @Override
