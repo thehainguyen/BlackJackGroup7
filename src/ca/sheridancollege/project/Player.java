@@ -18,6 +18,7 @@ public abstract class Player {
 
     private String name; //the unique name for this player
     private HandOfCards cards; // the cards that this player holds
+    private int score; // the score of this player
 
     /**
      * A constructor that allows you to set the player's unique ID
@@ -57,11 +58,22 @@ public abstract class Player {
 
     // Get the player's score
     public int getScore() {
-        return cards.getTotalScore();
+        return this.score;
+    }
+
+    // Set the player's score
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    // Add the player's score
+    public void addScore(int score) {
+        this.score += score;
     }
 
     // Reset the player cards
     public void releaseCards() {
         this.cards.reset();
+        this.score = 0;
     }
 }

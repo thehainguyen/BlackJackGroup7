@@ -60,6 +60,9 @@ public class Dealer extends Player {
 
         // Add the card to the player's hand
         player.addCard(card);
+
+        // Add the value of the card to the player's score
+        player.addScore(card.getValue());
         
         // Display the card
         Displayer.displayCardDealed("player", card);
@@ -80,6 +83,9 @@ public class Dealer extends Player {
 
         // Add the card to the dealer's hand
         addCard(card);
+
+        // Add the value of the card to the dealer's score
+        addScore(card.getValue());
 
         // Display the card
         Displayer.displayCardDealed("dealer", card);
