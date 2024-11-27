@@ -30,7 +30,9 @@ public class GroupOfCards {
         return cards;
     }
 
-    // Shuffle the cards
+    /**
+     * A method that will shuffle the group of cards
+     */
     public void shuffle() {
         Collections.shuffle(cards);
     }
