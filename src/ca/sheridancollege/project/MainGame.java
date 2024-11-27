@@ -157,4 +157,9 @@ public class MainGame extends Game {
     public GroupOfCards getDeckOfCards() {
         return deckOfCards;
     }
+
+    // deckOfCards setter
+    public void setDeckOfCards(DeckOfCards deckOfCards) {
+        this.deckOfCards = deckOfCards;
+    }
 }
