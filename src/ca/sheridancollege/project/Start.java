@@ -58,6 +58,9 @@ public class Start {
             userAnswer = Prompter.askPlayerToPLayAgain();
         }
 
+        // Print a separator line
+        Displayer.printBreakLine(50);
+
         // Display the final result after the game ends
         Displayer.displayFinalResult(player);
 

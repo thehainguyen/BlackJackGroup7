@@ -83,16 +83,22 @@ public class Displayer {
      * @param player The main player in the game.
      */
     public static void displayFinalResult(MainPlayer player) {
+        // Get the player's total chips
+        int chips = player.getChips();
+
         // Display the result based on the player's chips
-        if (player.getChips() == 0) {
-            System.out.println("You lost a total of " + player.getBet() + " chips!");
+        if (chips == 0) {
+            System.out.println("You lost all of your chips (" + player.getBet() + " chips)!");
             System.out.println("Better luck next time!");
-        } else if (player.getChips() < 1000) {
-            System.out.println("You lost a total of " + (1000 - player.getChips()) + " chips!");
+        } else if (chips < 1000) {
+            System.out.println("You lost a total of " + (1000 - chips) + " chips!");
             System.out.println("Better luck next time!");
-        } else {
+        } else if (chips == 1000) {
+            System.out.println("Your chips are safe!");
+            System.out.println("You still have " + player.getChips() + " chips!");
+        }else {
             System.out.println("Congratulations! " + player.getName());
-            System.out.println("You won a total of " + (player.getChips() - 1000) + " chips!");
+            System.out.println("You won a total of " + (chips - 1000) + " chips!");
         }
     }
 
