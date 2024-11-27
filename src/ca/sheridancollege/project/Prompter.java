@@ -1,5 +1,6 @@
 package ca.sheridancollege.project;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Prompter {
@@ -44,13 +45,27 @@ public class Prompter {
 
         // Ask player to bet
         System.out.print("Enter your bet: ");
-        int bet = scanner.nextInt();
 
-        // Check if the player has enough chips
-        while (!InputValidator.isValidBet(player, bet)) {
-            System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount: ");
-            bet = scanner.nextInt();
-        }
+        // Validate bet
+        int bet = 0;
+        do {
+            try {
+                // Get player's initial bet
+                if (bet == 0) {
+                    bet = scanner.nextInt();
+                }
+
+                // Check if the player has enough chips
+                if (!InputValidator.isValidBet(player, bet)) {
+                    System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount: ");
+                    bet = scanner.nextInt();
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid input. Please enter a number: ");
+                scanner.nextLine(); // Clear the input buffer
+                bet = 0;
+            }
+        } while (bet <= 0 || !InputValidator.isValidBet(player, bet));
 
         // Print a blank line
         System.out.println();
@@ -76,17 +91,25 @@ public class Prompter {
     }
 
     // Ask player to choose Ace card value
-    public static int askPlayerAceValue() {
+    public static int askPlayerAceValue(Card card) {
         // Ask player to choose Ace card value
-        System.out.print("Choose the value you want (1 or 11): ");
-        int aceValue = scanner.nextInt();
+        System.out.print("Please choosr the value of the Ace card: 1 or 11: ");
 
-        // Check for valid input
-        while (!InputValidator.isValidAceValue(aceValue)) {
-            System.out.println("Invalid input. Please enter 1 or 11: ");
-            aceValue = scanner.nextInt();
-        }
-
+        // Validate Ace card value
+        int aceValue = 0;
+        do {
+            try {
+                // Get player's choice
+                if (aceValue == 0) {
+                    aceValue = scanner.nextInt();
+                }
+            } catch (InputMismatchException e) {
+                System.out.print("Invalid input. Please enter 1 or 11: ");
+                scanner.nextLine(); // Clear the input buffer
+                aceValue = 0;
+            } 
+        } while (aceValue <= 0 || !InputValidator.isValidAceValue(aceValue));
+        
         // Return the player's choice
         return aceValue;
     }

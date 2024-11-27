@@ -18,7 +18,7 @@ public class DeckOfCards extends GroupOfCards {
 
         // Add 52 cards to the deck
         for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < 13; j++) {
+            for (int j = 0; j < 13; j++) {
                 cards.add(new NormalCard(Suit.values()[i], Value.values()[j]));
             }
         }

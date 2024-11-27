@@ -1,5 +1,7 @@
 package ca.sheridancollege.project;
 
+import ca.sheridancollege.project.NormalCard.Value;
+
 public class Dealer extends Player {
 
     public Dealer() {
@@ -43,51 +45,50 @@ public class Dealer extends Player {
     // Deal a card to the player
     public void dealToPlayer(Player player, DeckOfCards deckGroupOfCards) {
         // Get the first card from the deck and remove it from the deck
-        Card card = deckGroupOfCards.takeACard();
+        NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
 
-        // Check if the card is an Ace
-        if (card.getValue() == 1 || card.getValue() == 11) {
-            // Ask the player if they want an Ace as 1 or 11
-            int choice = Prompter.askPlayerAceValue();
-            
-            // Set the value of the card
-            switch (choice) {
-                case 1 -> card.setValue(1); // If the player chooses 1, set the value to 1
-                case 11 -> card.setValue(11); // If the player chooses 11, set the value to 11
-                default -> card.setValue(1); // If the player does not choose 1 or 11, set the value to 1
-            }
-        }
+        // Display the card
+        Displayer.displayCardDealed("player", card);
 
         // Add the card to the player's hand
         player.addCard(card);
 
-        // Add the value of the card to the player's score
-        player.addScore(card.getValue());
-        
-        // Display the card
-        Displayer.displayCardDealed("player", card);
+        // Check if the card is an Ace
+        if (card.getValue() == Value.ACE) {
+            // Ask the player if they want an Ace as 1 or 11
+            int score = Prompter.askPlayerAceValue(card);
+            
+            // Add the value of the card to the player's score
+            player.addScore(score);
+        } else {
+            // Add the value of the card to the player's score
+            player.addScore(card.getValue().getValue());
+        }
     }
     
     // Deal a card to the dealer
     public void dealToSelf(DeckOfCards deckGroupOfCards) {
         // Get the first card from the deck and remove it from the deck
-        Card card = deckGroupOfCards.takeACard();
-
-        // Check if the card is an Ace
-        if (card.getValue() == 1 || card.getValue() == 11) {
-            // If score is less than 11, set the value to 11
-            if (getScore() < 11) { 
-                card.setValue(11);
-            }
-        }
-
-        // Add the card to the dealer's hand
-        addCard(card);
-
-        // Add the value of the card to the dealer's score
-        addScore(card.getValue());
+        NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
 
         // Display the card
         Displayer.displayCardDealed("dealer", card);
+
+        // Add the card to the dealer's hand
+        addCard(card);
+        
+        // Check if the card is an Ace
+        if (card.getValue() == Value.ACE) {
+            // If score is less than 11, set the value to 11
+            if (getScore() < 11) { 
+                addScore(11);
+            } else {
+                // If score is 11, set the value to 1
+                addScore(1);
+            }
+        } else {
+            // Add the value of the card to the dealer's score
+            addScore(card.getValue().getValue());
+        }   
     }
 }

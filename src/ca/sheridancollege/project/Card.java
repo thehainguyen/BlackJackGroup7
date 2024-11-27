@@ -12,12 +12,6 @@ package ca.sheridancollege.project;
  * @author dancye
  */
 public abstract class Card {
-    //default modifier for child classes
-
-    public abstract int getValue();
-
-    public abstract void setValue(int value);
-
     /**
      * Students should implement this method for their specific children classes
      *

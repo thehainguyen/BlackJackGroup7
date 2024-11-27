@@ -28,6 +28,7 @@ public abstract class Player {
     public Player(String name) {
         this.name = name;
         this.cards = new HandOfCards();
+        this.score = 0;
     }
 
     /**
