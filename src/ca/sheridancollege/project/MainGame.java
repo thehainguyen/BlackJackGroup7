@@ -75,7 +75,7 @@ public class MainGame extends Game {
         } else if (this.player.getScore() < this.dealer.getScore()) {
             declarePlayerLose(); // Player loses
         } else {
-            System.out.println("It's a tie!"); // Draw
+            Displayer.displayDraw(false); // Draw
         }
     }
 
@@ -107,20 +107,20 @@ public class MainGame extends Game {
     public boolean isBlackJack() {
         // Both player and dealer have blackjack
         if (this.player.getScore() == 21 && this.dealer.getScore() == 21) {
-            System.out.println("Both you and the dealer have Blackjack! It's a tie.");
+            Displayer.displayDraw(true);
             return true;
         } 
         
         // Player has blackjack
         if (this.player.getScore() == 21) { 
-            System.out.println("Blackjack! You win!");
+            Displayer.displayPlayerWin(true);
             declarePlayerWin(); // Player wins
             return true;
         } 
         
         // Dealer has blackjack
         if (this.dealer.getScore() == 21) {
-            System.out.println("Dealer has Blackjack! You lose.");
+            Displayer.displayPlayerWin(false);
             declarePlayerLose(); // Player loses
             return true;
         }

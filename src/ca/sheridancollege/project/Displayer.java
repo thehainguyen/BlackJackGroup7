@@ -53,7 +53,7 @@ public class Displayer {
     }
 
     // Display the result
-    public static void displayResult(MainPlayer player) {
+    public static void displayFinalResult(MainPlayer player) {
         // Display the result
         if (player.getChips() == 0) {
             System.out.println("You lost total of " + player.getBet() + " chips!"); // Player lost all chips
@@ -90,6 +90,30 @@ public class Displayer {
             System.out.println("You got: " + card);
         } else {
             System.out.println("The Dealer got: " + card);
+        }
+    }
+
+    public static void displayDraw(boolean isBlackJack) {
+        if (isBlackJack) {
+            System.out.println("Both you and the dealer have Blackjack! It's a tie.");
+        } else {
+            System.out.println("Draw!");
+        }
+    }
+
+    public static void displayPlayerWin(boolean isBlackJack) {
+        if (isBlackJack) {
+            System.out.println("Blackjack! You win!");
+        } else {
+            System.out.println("You win!");
+        }
+    }
+
+    public static void displayDealerWin(boolean isBlackJack) {
+        if (isBlackJack) {
+            System.out.println("Blackjack! The Dealer wins!");
+        } else {
+            System.out.println("The Dealer wins!");
         }
     }
 }

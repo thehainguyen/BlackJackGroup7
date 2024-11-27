@@ -42,7 +42,7 @@ public class Start {
         }
 
         // Display the result
-        Displayer.displayResult(player);
+        Displayer.displayFinalResult(player);
 
         // Exit the game
         System.out.println();
