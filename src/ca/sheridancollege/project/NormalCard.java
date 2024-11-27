@@ -1,21 +1,35 @@
 package ca.sheridancollege.project;
 
-public class NormalCard extends Card{
-    // Card Suits
+public class NormalCard extends Card {
+
+    /**
+     * Enum representing the four suits in a standard deck of playing cards.
+     * The suits are Spades, Hearts, Clubs, and Diamonds.
+     */
     public enum Suit {
         SPADES, HEARTS, CLUBS, DIAMONDS
     }
 
-    // Card Values
+    /**
+     * Enum representing the values of the cards in a standard deck.
+     * Each card value corresponds to a numerical value, with face cards (Jack, Queen, King) 
+     * being valued at 10, and Ace valued as 1.
+     */
     public enum Value {
         ACE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10), JACK(10), QUEEN(10), KING(10);
         
         private final int value;
 
+        // Constructor to set the value for each card
         private Value(int value) {
             this.value = value;
         }
 
+        /**
+         * Gets the numerical value of the card.
+         * 
+         * @return The value of the card as an integer.
+         */
         public int getValue() {
             return value;
         }
@@ -24,20 +38,43 @@ public class NormalCard extends Card{
     private Suit suit; // Card Suit
     private Value value; // Card Value
 
+    /**
+     * Constructs a NormalCard object with a specified suit and value.
+     * 
+     * @param suit The suit of the card (Spades, Hearts, Clubs, or Diamonds).
+     * @param value The value of the card (Ace, Two, Three, ..., King).
+     */
     public NormalCard(Suit suit, Value value) {
         this.suit = suit;
         this.value = value;
     }
-    
+
     // Getters and Setters
+
+    /**
+     * Gets the suit of the card.
+     * 
+     * @return The suit of the card.
+     */
     public Suit getSuit() {
         return suit;
     }
-    
+
+    /**
+     * Gets the value of the card.
+     * 
+     * @return The value of the card.
+     */
     public Value getValue() {
         return value;
     }
 
+    /**
+     * Returns a string representation of the card in the format "VALUE of SUIT".
+     * For example: "ACE of SPADES" or "KING of HEARTS".
+     * 
+     * @return The string representation of the card.
+     */
     @Override
     public String toString() {
         return this.value + " of " + this.suit;
