@@ -62,18 +62,18 @@ public class Dealer extends Player {
         player.addCard(card);
         
         // Display the card
-        Displayer.displayCardToPlayer(player, card);
+        Displayer.displayCardDealed("player", card);
     }
     
     // Deal a card to the dealer
     public void dealToSelf(DeckOfCards deckGroupOfCards) {
         // Get the first card from the deck and remove it from the deck
-        NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
+        Card card = deckGroupOfCards.takeACard();
 
         // Check if the card is an Ace
         if (card.getValue() == 1 || card.getValue() == 11) {
             // If score is less than 11, set the value to 11
-            if (this.getScore() < 11) { 
+            if (getScore() < 11) { 
                 card.setValue(11);
             }
         }
@@ -82,6 +82,6 @@ public class Dealer extends Player {
         addCard(card);
 
         // Display the card
-        Displayer.displayCardToDealer(this, card);
+        Displayer.displayCardDealed("dealer", card);
     }
 }

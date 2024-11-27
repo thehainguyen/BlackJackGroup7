@@ -11,7 +11,7 @@ public class Displayer {
         displayCard(player);
 
         // Display player's score
-        displayScore(player);
+        displayScore(player, "player");
 
         // Print separator line
         printBreakLine(30);
@@ -20,7 +20,7 @@ public class Displayer {
         displayCard(dealer);
 
         // Display dealer's score
-        displayScore(dealer);
+        displayScore(dealer, "dealer");
 
         // Print separator line
         printBreakLine(100);
@@ -40,12 +40,12 @@ public class Displayer {
         System.out.println(String.join(", ", cards));
     }
 
-    public static void displayScore(Player player) {
-        System.out.println("Your score: " + player.getScore());
-    }
-
-    public static void displayScore(Dealer player) {
-        System.out.println("Dealer score: " + player.getScore());
+    public static void displayScore(Player player, String role) {
+        if (role.equals("player")) {
+            System.out.println("Your score: " + player.getScore());
+        } else {
+            System.out.println("Dealer score: " + player.getScore());
+        }
     }
 
     public static void printBreakLine(int length) {
@@ -57,8 +57,10 @@ public class Displayer {
         // Display the result
         if (player.getChips() == 0) {
             System.out.println("You lost total of " + player.getBet() + " chips!"); // Player lost all chips
+            System.out.println("Better luck next time!");
         } else if (player.getChips() < 1000){
             System.out.println("You lost total of " + (1000 - player.getChips()) + " chips!"); // Player lost less than 1000 chips
+            System.out.println("Better luck next time!");
         } else {
             System.out.println("Congratulations! " + player.getName());
             System.out.println("You won total of " + (player.getChips() - 1000) + " chips!"); // Player won
@@ -82,13 +84,12 @@ public class Displayer {
         System.out.println("You have " + player.getChips() + " chips.");
     }
 
-    // Display card dealed to player
-    public static void displayCardToPlayer(Player player, Card card) {
-        System.out.println("You got: " + card);
-    }
-
-    // Display card dealed to dealer
-    public static void displayCardToDealer(Dealer dealer, Card card) {
-        System.out.println("The Dealer got: " + card);
+    // Display card dealed
+    public static void displayCardDealed(String role, Card card) {
+        if (role.equals("player")) {
+            System.out.println("You got: " + card);
+        } else {
+            System.out.println("The Dealer got: " + card);
+        }
     }
 }
