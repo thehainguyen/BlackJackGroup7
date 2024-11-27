@@ -5,10 +5,8 @@ public class MainGame extends Game {
     private MainPlayer player; // Player object
     private DeckOfCards deckOfCards; // Deck of cards
     
-    public MainGame(String name, Dealer dealer, MainPlayer player) {
+    public MainGame(String name) {
         super(name); // Set the name of the game
-        this.dealer = dealer;
-        this.player = player;
         this.deckOfCards = new DeckOfCards(); //Create the deck of cards
     }
 
@@ -137,12 +135,20 @@ public class MainGame extends Game {
         this.player.releaseCards();
     }
 
-    // Player getter
+    // Player setter and getter
+    public void setPlayer(MainPlayer player) {
+        this.player = player;
+    }
+
     public Player getPlayer() {
         return this.player;
     }
 
-    // Dealer getter
+    // Dealer setter and getter 
+    public void setDealer(Dealer dealer) {
+        this.dealer = dealer;
+    }
+
     public Dealer getDealer() {
         return this.dealer;
     }

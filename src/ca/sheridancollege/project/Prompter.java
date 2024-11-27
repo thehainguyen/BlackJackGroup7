@@ -74,4 +74,20 @@ public class Prompter {
         // Return the player's choice
         return userChoice;
     }
+
+    // Ask player to choose Ace card value
+    public static int askPlayerAceValue() {
+        // Ask player to choose Ace card value
+        System.out.print("Choose the value you want (1 or 11): ");
+        int aceValue = scanner.nextInt();
+
+        // Check for valid input
+        while (aceValue != 1 && aceValue != 11) {
+            System.out.println("Invalid input. Please enter 1 or 11: ");
+            aceValue = scanner.nextInt();
+        }
+
+        // Return the player's choice
+        return aceValue;
+    }
 }

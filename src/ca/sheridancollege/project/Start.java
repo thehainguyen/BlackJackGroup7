@@ -1,12 +1,7 @@
 package ca.sheridancollege.project;
 
-import java.util.Scanner;
-
 public class Start {
     public static void main(String[] args) {
-        // Initialise the Scanner to read user input
-        Scanner scanner = new Scanner(System.in);
-
         // Get the name of the player
         String name = Prompter.askPlayerName();
 
@@ -19,7 +14,11 @@ public class Start {
         Dealer dealer = new Dealer();
 
         // Create the game
-        MainGame game = new MainGame(name, dealer, player);
+        MainGame game = new MainGame("Blackjack");
+
+        // Set the player and the dealer
+        game.setPlayer(player);
+        game.setDealer(dealer);
 
         // Start the game
         String userAnswer = "yes";
@@ -39,7 +38,7 @@ public class Start {
             game.reset();
             
             // Ask if the player wants to play again
-            userAnswer =Prompter.askPlayerToPLayAgain();
+            userAnswer = Prompter.askPlayerToPLayAgain();
         }
 
         // Display the result
@@ -48,6 +47,5 @@ public class Start {
         // Exit the game
         System.out.println();
         System.out.println("Thanks for playing!");
-        scanner.close();
     }
 }
