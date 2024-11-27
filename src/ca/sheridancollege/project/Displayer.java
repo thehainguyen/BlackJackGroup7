@@ -70,6 +70,7 @@ public class Displayer {
     // Display win amount
     public static void displayWinAmount(MainPlayer player) {
         System.out.println("Congratulations! " + player.getName());
+        displayPlayerWin(false);
         System.out.println("You won " + player.getBet()*2 + " chips!");
     }
 
@@ -97,15 +98,18 @@ public class Displayer {
         if (isBlackJack) {
             System.out.println("Both you and the dealer have Blackjack! It's a tie.");
         } else {
-            System.out.println("Draw!");
+            System.out.println("It is a Draw!");
         }
+
+        System.out.println("Your chips are safe!");
+        System.out.println();
     }
 
     public static void displayPlayerWin(boolean isBlackJack) {
         if (isBlackJack) {
-            System.out.println("Blackjack! You win!");
+            System.out.println("Blackjack! You win the game!");
         } else {
-            System.out.println("You win!");
+            System.out.println("You are the winner!");
         }
     }
 

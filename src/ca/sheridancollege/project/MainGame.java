@@ -25,7 +25,7 @@ public class MainGame extends Game {
         }
 
         // Player's turn
-        while (this.player.getScore() < 21) {
+        while (this.player.getScore() <= 21) {
             // Ask player if they want to hit or stand
             String userChoice = Prompter.askPlayerHitOrStand();
 
@@ -120,7 +120,7 @@ public class MainGame extends Game {
         
         // Dealer has blackjack
         if (this.dealer.getScore() == 21) {
-            Displayer.displayPlayerWin(false);
+            Displayer.displayDealerWin(true);
             declarePlayerLose(); // Player loses
             return true;
         }
