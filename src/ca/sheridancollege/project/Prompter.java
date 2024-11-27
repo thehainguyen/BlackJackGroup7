@@ -3,59 +3,73 @@ package ca.sheridancollege.project;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The Prompter class handles user input during the game. It includes methods
+ * for asking the player for their name, bets, and gameplay decisions.
+ * This class ensures input validation and user-friendly interaction.
+ * 
+ * @author The Hai Nguyen - 991745555 - November 27, 2024
+ */
 public class Prompter {
+
+    // Shared scanner object for user input
     public static Scanner scanner = new Scanner(System.in);
 
-    // Ask player to enter the name
-    public static String askPlayerName(){
-        // Ask the player to enter their name
+    /**
+     * Prompts the player to enter their name and validates the input.
+     * 
+     * @return The validated name entered by the player.
+     */
+    public static String askPlayerName() {
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
 
-        // Check valid name
+        // Validate the name using InputValidator
         while (!InputValidator.isValidName(name)) {
             System.out.print("Invalid input. Please enter your name: ");
             name = scanner.nextLine();
         }
 
-        // Return the player's name
-        return name;
+        return name; // Return the validated name
     }
 
-    // Ask player if they want to play again
+    /**
+     * Asks the player if they want to play again and validates their response.
+     * 
+     * @return The player's response ("yes" or "no").
+     */
     public static String askPlayerToPLayAgain() {
-        // Ask if the player wants to play again
         System.out.print("Do you want to play again? (Yes/No): ");
         String userAnswer = scanner.next().toLowerCase();
 
-        // Check for valid input
+        // Validate the response
         while (!InputValidator.isYesOrNo(userAnswer)) {
-            System.out.println("Invalid input. Please enter Yes or No: ");
+            System.out.print("Invalid input. Please enter Yes or No: ");
             userAnswer = scanner.next().toLowerCase();
         }
-        
-        // Return the user's answer
-        return userAnswer;
+
+        return userAnswer; // Return the validated response
     }
 
-    // Ask player to bet
+    /**
+     * Prompts the player to place a bet and validates the amount.
+     * Ensures the player has enough chips and handles invalid inputs.
+     * 
+     * @param player The main player placing the bet.
+     */
     public static void askPlayerBet(MainPlayer player) {
-        // Display chips
-        Displayer.displayChips(player);
-
-        // Ask player to bet
+        Displayer.displayChips(player); // Display current chips
         System.out.print("Enter your bet: ");
-
-        // Validate bet
         int bet = 0;
+
+        // Loop until a valid bet is entered
         do {
             try {
-                // Get player's initial bet
                 if (bet == 0) {
-                    bet = scanner.nextInt();
+                    bet = scanner.nextInt(); // Read the bet amount
                 }
 
-                // Check if the player has enough chips
+                // Check if the bet is valid
                 if (!InputValidator.isValidBet(player, bet)) {
                     System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount: ");
                     bet = scanner.nextInt();
@@ -67,50 +81,52 @@ public class Prompter {
             }
         } while (bet <= 0 || !InputValidator.isValidBet(player, bet));
 
-        // Print a blank line
-        System.out.println();
-
-        // Set the player's bet
-        player.setBet(bet);
+        System.out.println(); // Print a blank line
+        player.setBet(bet); // Set the player's bet
     }
 
-    // Ask player to hit or stand
+    /**
+     * Asks the player if they want to hit or stand and validates the response.
+     * 
+     * @return The player's decision ("hit" or "stand").
+     */
     public static String askPlayerHitOrStand() {
-        // Ask player to hit or stand
         System.out.print("Hit or Stand?: ");
         String userChoice = scanner.next().toLowerCase();
 
-        // Check for valid input
+        // Validate the response
         while (!InputValidator.isHitOrStand(userChoice)) {
-            System.out.println("Invalid input. Please enter Hit or Stand: ");
+            System.out.print("Invalid input. Please enter Hit or Stand: ");
             userChoice = scanner.next().toLowerCase();
         }
 
-        // Return the player's choice
-        return userChoice;
+        return userChoice; // Return the validated response
     }
 
-    // Ask player to choose Ace card value
+    /**
+     * Prompts the player to choose a value for the Ace card (1 or 11)
+     * and validates the input.
+     * 
+     * @param card The Ace card for which the value is being chosen.
+     * @return The validated value of the Ace card (1 or 11).
+     */
     public static int askPlayerAceValue(Card card) {
-        // Ask player to choose Ace card value
-        System.out.print("Please choosr the value of the Ace card: 1 or 11: ");
-
-        // Validate Ace card value
+        System.out.print("Please choose the value of the Ace card: 1 or 11: ");
         int aceValue = 0;
+
+        // Loop until a valid Ace value is entered
         do {
             try {
-                // Get player's choice
                 if (aceValue == 0) {
-                    aceValue = scanner.nextInt();
+                    aceValue = scanner.nextInt(); // Read the Ace value
                 }
             } catch (InputMismatchException e) {
                 System.out.print("Invalid input. Please enter 1 or 11: ");
                 scanner.nextLine(); // Clear the input buffer
                 aceValue = 0;
-            } 
+            }
         } while (aceValue <= 0 || !InputValidator.isValidAceValue(aceValue));
-        
-        // Return the player's choice
-        return aceValue;
+
+        return aceValue; // Return the validated Ace value
     }
 }
