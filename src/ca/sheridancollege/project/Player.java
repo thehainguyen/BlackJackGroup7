@@ -8,11 +8,13 @@ package ca.sheridancollege.project;
 import java.util.ArrayList;
 
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
+ * A class that models each Player in the game. Each player has a unique name (ID), 
+ * a hand of cards, and a score. This class provides methods for managing the player's 
+ * name, hand, and score during the game.
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
- * @moffied by The Hai Nguyen - 991745555 - September 30, 2024
+ * @moffied by The Hai Nguyen - 991745555 - October 30, 2024
  */
 public abstract class Player {
 
@@ -21,7 +23,7 @@ public abstract class Player {
     private int score; // the score of this player
 
     /**
-     * A constructor that allows you to set the player's unique ID
+     * Constructs a Player object with a unique name. Initializes the player's hand and score.
      *
      * @param name the unique ID to assign to this player.
      */
@@ -47,32 +49,55 @@ public abstract class Player {
         this.name = name;
     }
 
-    // Add a card to the player's hand
+    /**
+     * Adds a card to the player's hand.
+     * 
+     * @param card The card to add to the player's hand.
+     */
     public void addCard(Card card) {
         cards.addCard(card);
     }
 
-    // Get the group of cards from the player
+    /**
+     * Gets the list of cards the player holds in their hand.
+     * 
+     * @return An ArrayList of cards held by the player.
+     */
     public ArrayList<Card> getCards() {
         return cards.getCards();
-    }       
+    }
 
-    // Get the player's score
+    /**
+     * Gets the score of the player.
+     * 
+     * @return The player's current score.
+     */
     public int getScore() {
         return this.score;
     }
 
-    // Set the player's score
+    /**
+     * Sets the player's score to the specified value.
+     * 
+     * @param score The score to set for the player.
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
-    // Add the player's score
+    /**
+     * Adds the specified value to the player's score.
+     * 
+     * @param score The score to add to the player's current score.
+     */
     public void addScore(int score) {
         this.score += score;
     }
 
-    // Reset the player cards
+    /**
+     * Resets the player's hand of cards and score. This method is used to prepare the player 
+     * for a new round of the game.
+     */
     public void releaseCards() {
         this.cards.reset();
         this.score = 0;
