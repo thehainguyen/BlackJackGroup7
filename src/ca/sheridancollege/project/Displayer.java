@@ -7,8 +7,7 @@ import java.util.ArrayList;
  * about the game, including player and dealer cards, scores, results, and chips.
  * This class handles all game-related outputs for the user.
  * 
- * @author [Your Name]
- * @version 1.0
+ * @author The Hai Nguyen - 991745555 - November 27, 2024
  */
 public class Displayer {
 
