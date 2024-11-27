@@ -130,7 +130,7 @@ public class MainGame extends Game {
     }
     
     // Reset the game
-    public void reset() {
+    public void playAgain() {
         this.dealer.releaseCards();
         this.player.releaseCards();
     }

@@ -35,7 +35,7 @@ public class Start {
             }
 
             // Reset the game
-            game.reset();
+            game.playAgain();
             
             // Ask if the player wants to play again
             userAnswer = Prompter.askPlayerToPLayAgain();
