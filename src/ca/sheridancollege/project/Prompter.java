@@ -82,7 +82,7 @@ public class Prompter {
         int aceValue = scanner.nextInt();
 
         // Check for valid input
-        while (aceValue != 1 && aceValue != 11) {
+        while (!InputValidator.isValidAceValue(aceValue)) {
             System.out.println("Invalid input. Please enter 1 or 11: ");
             aceValue = scanner.nextInt();
         }

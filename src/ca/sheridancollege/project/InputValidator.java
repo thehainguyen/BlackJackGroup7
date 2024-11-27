@@ -17,4 +17,8 @@ public class InputValidator {
     public static boolean isValidBet(MainPlayer player, int bet) {
         return bet > 0 && bet <= player.getChips();
     }
+
+    public static boolean isValidAceValue(int aceValue) {
+        return aceValue == 1 || aceValue == 11;
+    }
 }
