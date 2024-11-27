@@ -81,4 +81,14 @@ public class Displayer {
     public static void displayChips(MainPlayer player) {
         System.out.println("You have " + player.getChips() + " chips.");
     }
+
+    // Display card dealed to player
+    public static void displayCardToPlayer(Player player, Card card) {
+        System.out.println("You got: " + card);
+    }
+
+    // Display card dealed to dealer
+    public static void displayCardToDealer(Dealer dealer, Card card) {
+        System.out.println("The Dealer got: " + card);
+    }
 }

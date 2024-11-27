@@ -1,7 +1,5 @@
 package ca.sheridancollege.project;
 
-import java.util.Scanner;
-
 public class Dealer extends Player {
 
     public Dealer() {
@@ -37,6 +35,9 @@ public class Dealer extends Player {
         //Deal 2 cards to the dealer
         dealToSelf(deckGroupOfCards);
         dealToSelf(deckGroupOfCards);
+
+        // Print a blank line
+        System.out.println();
     }
 
     // Deal a card to the player
@@ -46,12 +47,8 @@ public class Dealer extends Player {
 
         // Check if the card is an Ace
         if (card.getValue() == 1 || card.getValue() == 11) {
-            // Instantiate the scanner
-            Scanner scanner = new Scanner(System.in);
-
             // Ask the player if they want an Ace as 1 or 11
-            System.out.print("An Ace was dealt to you. Please choose the value you want (1 or 11): ");
-            int choice = scanner.nextInt(); // Get the player's choice
+            int choice = Prompter.askPlayerAceValue();
             
             // Set the value of the card
             switch (choice) {
@@ -65,7 +62,7 @@ public class Dealer extends Player {
         player.addCard(card);
         
         // Display the card
-        System.out.println("You got: " + card.toString());
+        Displayer.displayCardToPlayer(player, card);
     }
     
     // Deal a card to the dealer
@@ -81,10 +78,10 @@ public class Dealer extends Player {
             }
         }
 
-        // Display the card
-        System.out.println("The Dealer got: " + card.toString());
-
         // Add the card to the dealer's hand
         addCard(card);
+
+        // Display the card
+        Displayer.displayCardToDealer(this, card);
     }
 }
