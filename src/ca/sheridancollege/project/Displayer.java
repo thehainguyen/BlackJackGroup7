@@ -93,17 +93,39 @@ public class Displayer {
 
         // Display the result based on the player's chips
         if (chips == 0) {
-            System.out.println("Sorry, " + player.getName() + ". You lose all of your chips!");
+            System.out.println("Sorry, " + player.getName() + ". You lose all of your chips!"); // Lose all chips
+            
+            System.out.println("You lost a total of " + player.getMaxChips() + " chips!");
+
+            System.out.println(); // Print an empty line
+
+            displayWinAndLoseRounds(player); // Display win and lose rounds
+
             System.out.println("Better luck next time!");
         } else if (chips < 1000) {
-            System.out.println("You lost a total of " + (1000 - chips) + " chips!");
+            System.out.println("You lost a total of " + (player.getMaxChips() - chips) + " chips!"); // Lose some chips
+            displayChips(player);
+
+            System.out.println(); // Print an empty line
+
+            displayWinAndLoseRounds(player); // Display win and lose rounds
+
             System.out.println("Better luck next time!");
         } else if (chips == 1000) {
             System.out.println("Your chips are safe!");
             System.out.println("You still have " + player.getChips() + " chips!");
+
+            System.out.println(); // Print an empty line
+
+            displayWinAndLoseRounds(player); // Display win and lose rounds
         }else {
             System.out.println("Congratulations! " + player.getName());
             System.out.println("You won a total of " + (chips - 1000) + " chips!");
+            displayChips(player);
+
+            System.out.println(); // Print an empty line
+
+            displayWinAndLoseRounds(player); // Display win and lose rounds
         }
     }
 
@@ -190,5 +212,16 @@ public class Displayer {
         } else {
             System.out.println("The Dealer wins!");
         }
+    }
+
+    /**
+     * Displays win and lose rounds for the player.
+     * 
+     * @param player The main player in the game.
+     */
+    public static void displayWinAndLoseRounds(MainPlayer player) {
+        System.out.println("You won " + player.getWinRounds() + " rounds.");
+        System.out.println("You lost " + player.getLoseRounds() + " rounds.");
+        System.out.println("You drew " + player.getDrawRounds() + " rounds.");
     }
 }

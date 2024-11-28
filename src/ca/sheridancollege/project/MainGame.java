@@ -91,6 +91,7 @@ public class MainGame extends Game {
         } else if (this.player.getScore() < this.dealer.getScore()) {
             declarePlayerLose(); // Dealer wins
         } else {
+            this.player.setDrawRounds(this.player.getDrawRounds() + 1);
             Displayer.displayDraw(false); // It's a draw
         }
     }
@@ -100,7 +101,13 @@ public class MainGame extends Game {
      */
     public void declarePlayerWin() {
         Displayer.displayWinAmount(this.player); // Show win amount
+
         this.player.setChips(this.player.getChips() + this.player.getBet() * 2); // Update chips
+        if (this.player.getChips() > this.player.getMaxChips()) {
+            this.player.setMaxChips(this.player.getChips()); // Update max chips
+        }
+
+        this.player.setWinRounds(this.player.getWinRounds() + 1); // Update win rounds
         System.out.println(); // Blank line for readability
     }
 
@@ -109,7 +116,10 @@ public class MainGame extends Game {
      */
     public void declarePlayerLose() {
         Displayer.displayLoseAmount(this.player); // Show lose amount
+
         this.player.setChips(this.player.getChips() - this.player.getBet()); // Update chips
+        this.player.setLoseRounds(this.player.getLoseRounds() + 1); // Update lose rounds
+
         System.out.println(); // Blank line for readability
     }
 

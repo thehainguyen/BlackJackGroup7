@@ -3,7 +3,7 @@ package ca.sheridancollege.project;
 /**
  * The MainPlayer class models a player in the game who has chips, can place bets, and tracks
  * their performance during the game. It extends the Player class, adding attributes and methods
- * for managing the player's chips, bet, maximum chips, and round statistics (wins and losses).
+ * for managing the player's chips, bet, maximum chips, and round statistics (wins, draws, losses).
  * 
  * The player starts with an initial chip amount of 1000 and can update these attributes
  * based on the gameplay.
@@ -20,6 +20,7 @@ public class MainPlayer extends Player {
 
     private int winRounds = 0; // The number of rounds the player has won
     private int loseRounds = 0; // The number of rounds the player has lost
+    private int drawRounds = 0; // The number of rounds the player has drawn
 
     /**
      * Constructor to initialize a MainPlayer with a given name.
@@ -90,7 +91,7 @@ public class MainPlayer extends Player {
      * 
      * @return The number of rounds won by the player.
      */
-    public int getWinRound() {
+    public int getWinRounds() {
         return winRounds;
     }
 
@@ -99,7 +100,7 @@ public class MainPlayer extends Player {
      * 
      * @param winRound The new number of rounds won by the player.
      */
-    public void setWinRound(int winRound) {
+    public void setWinRounds(int winRound) {
         this.winRounds = winRound;
     }
 
@@ -108,7 +109,7 @@ public class MainPlayer extends Player {
      * 
      * @return The number of rounds lost by the player.
      */
-    public int getLoseRound() {
+    public int getLoseRounds() {
         return loseRounds;
     }
 
@@ -117,7 +118,25 @@ public class MainPlayer extends Player {
      * 
      * @param loseRound The new number of rounds lost by the player.
      */
-    public void setLoseRound(int loseRound) {
+    public void setLoseRounds(int loseRound) {
         this.loseRounds = loseRound;
+    }
+
+    /**
+     * Gets the number of rounds the player has drawn.
+     * 
+     * @return The number of rounds drawn by the player.
+     */
+    public int getDrawRounds() {
+        return drawRounds;
+    }
+
+    /**
+     * Updates the number of rounds the player has drawn.
+     *              
+     * @param drawRound The new number of rounds drawn by the player.
+     */
+    public void setDrawRounds(int drawRound) {
+        this.drawRounds = drawRound;
     }
 }
