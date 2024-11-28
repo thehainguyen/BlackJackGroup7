@@ -3,6 +3,25 @@ package ca.sheridancollege.project;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * Unit tests for the InputValidator class.
+ * 
+ * This class contains test cases to validate the correctness of the InputValidator
+ * methods. The methods are tested for good, bounded (edge cases), and bad inputs 
+ * to ensure robustness and proper behavior in various scenarios.
+ * 
+ * Methods tested include:
+ * - isHitOrStand: Validates input for "hit" or "stand".
+ * - isYesOrNo: Validates input for "yes" or "no".
+ * - isValidName: Validates player names for non-blank and valid formats.
+ * - isValidBet: Validates player bets within allowable chip range.
+ * - isValidAceValue: Validates if an ace value is either 1 or 11.
+ * 
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 28, 2024
+ */
 public class InputValidatorTest {
 
     /**
