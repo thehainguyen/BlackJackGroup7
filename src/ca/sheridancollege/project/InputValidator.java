@@ -7,7 +7,9 @@ package ca.sheridancollege.project;
  * the player's bet is within a valid range. The class ensures that the game 
  * runs smoothly by preventing invalid user input.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class InputValidator {
 

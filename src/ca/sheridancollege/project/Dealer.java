@@ -8,7 +8,9 @@ import ca.sheridancollege.project.NormalCard.Value;
  * and calculating the dealer's score. The dealer follows a set of rules for when to hit 
  * or stand during the game.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class Dealer extends Player {
 

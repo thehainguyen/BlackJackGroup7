@@ -1,5 +1,19 @@
 package ca.sheridancollege.project;
 
+/**
+ * The NormalCard class represents a standard playing card in a deck. 
+ * Each card has a suit (Spades, Hearts, Clubs, or Diamonds) and a value 
+ * (Ace, Two, ..., King). The class provides methods to access the card's 
+ * suit and value and overrides the toString method to display the card 
+ * in a readable format.
+ * 
+ * This class also includes nested enums for Suit and Value to define 
+ * the possible attributes of a card.
+ * 
+ * @author dancye
+ * @author Paul Bonenfant Jan 2020
+ * @moffied by The Hai Nguyen - 991745555 - October 30, 2024
+ */
 public class NormalCard extends Card {
 
     /**

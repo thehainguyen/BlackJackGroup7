@@ -10,7 +10,9 @@ import java.util.ArrayList;
  * to refill the deck with cards, shuffle the deck, and draw a card from the deck. 
  * The deck is composed of 4 suits, each containing 13 values (cards).
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class DeckOfCards extends GroupOfCards {
 

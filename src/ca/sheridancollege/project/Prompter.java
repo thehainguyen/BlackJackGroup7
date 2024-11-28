@@ -8,7 +8,9 @@ import java.util.Scanner;
  * for asking the player for their name, bets, and gameplay decisions.
  * This class ensures input validation and user-friendly interaction.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class Prompter {
 

@@ -4,7 +4,9 @@ package ca.sheridancollege.project;
  * MainGame class extends the Game class to implement the logic for a blackjack game.
  * It handles player and dealer actions, determines winners, and maintains the game flow.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class MainGame extends Game {
 

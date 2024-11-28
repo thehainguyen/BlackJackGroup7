@@ -6,7 +6,9 @@ package ca.sheridancollege.project;
  * starting the game, handling betting, playing rounds, and asking the player if they want to play again.
  * The game continues as long as the player has chips and chooses to continue.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class Start {
 
@@ -57,9 +59,6 @@ public class Start {
             // Ask if the player wants to play another round
             userAnswer = Prompter.askPlayerToPLayAgain();
         }
-
-        // Print a separator line
-        Displayer.printBreakLine(50);
 
         // Display the final result after the game ends
         Displayer.displayFinalResult(player);

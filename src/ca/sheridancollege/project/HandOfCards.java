@@ -4,7 +4,9 @@ package ca.sheridancollege.project;
  * The HandOfCards class models a collection of cards held by a player or dealer. 
  * It allows cards to be added to the hand and provides a method to reset the hand by clearing the cards.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class HandOfCards extends GroupOfCards {
 

@@ -7,7 +7,9 @@ import java.util.ArrayList;
  * about the game, including player and dealer cards, scores, results, and chips.
  * This class handles all game-related outputs for the user.
  * 
- * @author The Hai Nguyen - 991745555 - November 27, 2024
+ * @author The Hai Nguyen
+ * @studentID 991745555
+ * @date November 27, 2024
  */
 public class Displayer {
 
@@ -86,9 +88,12 @@ public class Displayer {
         // Get the player's total chips
         int chips = player.getChips();
 
+        // Print a separator line
+        printBreakLine(50);
+
         // Display the result based on the player's chips
         if (chips == 0) {
-            System.out.println("You lost all of your chips (" + player.getBet() + " chips)!");
+            System.out.println("Sorry, " + player.getName() + ". You lose all of your chips!");
             System.out.println("Better luck next time!");
         } else if (chips < 1000) {
             System.out.println("You lost a total of " + (1000 - chips) + " chips!");
