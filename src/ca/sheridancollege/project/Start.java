@@ -43,7 +43,10 @@ public class Start {
         String userAnswer = "yes";
         while (userAnswer.equals("yes")) {
             // Ask the player to place a bet
-            Prompter.askPlayerBet(player);
+            int bet = Prompter.askPlayerBet(player);
+
+            // Set the player's bet
+            player.setBet(bet);
 
             // Play a round of the game
             game.play();

@@ -58,34 +58,36 @@ public class Prompter {
      * Ensures the player has enough chips and handles invalid inputs.
      * 
      * @param player The main player placing the bet.
+     * @return The validated bet amount.
      */
-    public static void askPlayerBet(MainPlayer player) {
+    public static int askPlayerBet(MainPlayer player) {
         Displayer.displayChips(player); // Display current chips
         System.out.print("Enter your bet: ");
         int bet = 0;
-
-        // Loop until a valid bet is entered
-        do {
+    
+        while (true) { // Loop until a valid bet is entered
             try {
-                if (bet == 0) {
-                    bet = scanner.nextInt(); // Read the bet amount
-                }
-
+                bet = scanner.nextInt(); // Read the bet amount
+    
                 // Check if the bet is valid
-                if (!InputValidator.isValidBet(player, bet)) {
+                if (bet <= 0) {
+                    System.out.print("Please enter a positive value: ");
+                } else if (!InputValidator.isValidBet(player, bet)) {
                     System.out.print("You only have " + player.getChips() + " chips. Please enter a smaller amount: ");
-                    bet = scanner.nextInt();
+                } else {
+                    break; // Exit the loop if the bet is valid
                 }
             } catch (InputMismatchException e) {
                 System.out.print("Invalid input. Please enter a number: ");
                 scanner.nextLine(); // Clear the input buffer
-                bet = 0;
             }
-        } while (bet <= 0 || !InputValidator.isValidBet(player, bet));
-
+        }
+    
         System.out.println(); // Print a blank line
-        player.setBet(bet); // Set the player's bet
+        return bet; // Return the validated bet
     }
+    
+    
 
     /**
      * Asks the player if they want to hit or stand and validates the response.
@@ -115,20 +117,24 @@ public class Prompter {
     public static int askPlayerAceValue(Card card) {
         System.out.print("Please choose the value of the Ace card: 1 or 11: ");
         int aceValue = 0;
-
-        // Loop until a valid Ace value is entered
-        do {
+    
+        while (true) { // Loop until a valid Ace value is entered
             try {
-                if (aceValue == 0) {
-                    aceValue = scanner.nextInt(); // Read the Ace value
+                aceValue = scanner.nextInt(); // Read the Ace value
+    
+                // Check if the Ace value is valid
+                if (!InputValidator.isValidAceValue(aceValue)) {
+                    System.out.print("Invalid choice. Please enter 1 or 11: ");
+                } else {
+                    break; // Exit the loop if a valid value is entered
                 }
             } catch (InputMismatchException e) {
                 System.out.print("Invalid input. Please enter 1 or 11: ");
                 scanner.nextLine(); // Clear the input buffer
-                aceValue = 0;
             }
-        } while (aceValue <= 0 || !InputValidator.isValidAceValue(aceValue));
-
+        }
+    
         return aceValue; // Return the validated Ace value
     }
+    
 }
