@@ -198,20 +198,20 @@ public class MainGame extends Game {
     }
 
     /**
-     * Gets the deck of cards object.
-     * 
-     * @return The deck of cards used in the game.
-     */
-    public GroupOfCards getDeckOfCards() {
-        return deckOfCards;
-    }
-
-    /**
      * Sets the deck of cards object.
      * 
      * @param deckOfCards The deck of cards to be set.
      */
     public void setDeckOfCards(DeckOfCards deckOfCards) {
         this.deckOfCards = deckOfCards;
+    }
+
+    /**
+     * Gets the deck of cards object.
+     * 
+     * @return The deck of cards used in the game.
+     */
+    public GroupOfCards getDeckOfCards() {
+        return deckOfCards;
     }
 }

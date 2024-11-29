@@ -80,7 +80,7 @@ public class Dealer extends Player {
         NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
 
         // Display the card
-        Displayer.displayCardDealed("player", card);
+        Displayer.displayCardDealed(card, "player");
 
         // Add the card to the player's hand
         player.addCard(card);
@@ -91,10 +91,10 @@ public class Dealer extends Player {
             int score = Prompter.askPlayerAceValue(card);
             
             // Add the value of the card to the player's score
-            player.addScore(score);
+            player.setScore(player.getScore() + score);
         } else {
             // Add the value of the card to the player's score
-            player.addScore(card.getValue().getValue());
+            player.setScore(player.getScore() + card.getValue().getValue());
         }
     }
 
@@ -109,7 +109,7 @@ public class Dealer extends Player {
         NormalCard card = (NormalCard) deckGroupOfCards.takeACard();
 
         // Display the card
-        Displayer.displayCardDealed("dealer", card);
+        Displayer.displayCardDealed(card, "dealer");
 
         // Add the card to the dealer's hand
         addCard(card);
@@ -118,14 +118,14 @@ public class Dealer extends Player {
         if (card.getValue() == Value.ACE) {
             // If score is less than 11, set the value to 11
             if (getScore() < 11) { 
-                addScore(11);
+                setScore(getScore() + 11);
             } else {
                 // If score is 11, set the value to 1
-                addScore(1);
+                setScore(getScore() + 1);
             }
         } else {
             // Add the value of the card to the dealer's score
-            addScore(card.getValue().getValue());
+            setScore(getScore() + card.getValue().getValue());
         }   
     }
 }

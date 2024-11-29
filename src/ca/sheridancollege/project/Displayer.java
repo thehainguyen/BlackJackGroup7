@@ -19,7 +19,7 @@ public class Displayer {
      * @param player The main player in the game.
      * @param dealer The dealer in the game.
      */
-    public static void displayAll(MainPlayer player, Dealer dealer) {
+    public static void displayAll(Player player, Player dealer) {
         // Print separator line
         printBreakLine(100);
 
@@ -71,15 +71,6 @@ public class Displayer {
     }
 
     /**
-     * Prints a separator line of a specified length.
-     * 
-     * @param length The length of the separator line.
-     */
-    public static void printBreakLine(int length) {
-        System.out.println("-".repeat(length));
-    }
-
-    /**
      * Displays the final result of the game, including the player's total chips.
      * 
      * @param player The main player in the game.
@@ -99,7 +90,7 @@ public class Displayer {
 
             System.out.println(); // Print an empty line
 
-            displayWinAndLoseRounds(player); // Display win and lose rounds
+            displayPlayedRounds(player); // Display win and lose rounds
 
             System.out.println("Better luck next time!");
         } else if (chips < 1000) {
@@ -108,7 +99,7 @@ public class Displayer {
 
             System.out.println(); // Print an empty line
 
-            displayWinAndLoseRounds(player); // Display win and lose rounds
+            displayPlayedRounds(player); // Display win and lose rounds
 
             System.out.println("Better luck next time!");
         } else if (chips == 1000) {
@@ -117,7 +108,7 @@ public class Displayer {
 
             System.out.println(); // Print an empty line
 
-            displayWinAndLoseRounds(player); // Display win and lose rounds
+            displayPlayedRounds(player); // Display win and lose rounds
         }else {
             System.out.println("Congratulations! " + player.getName());
             System.out.println("You won a total of " + (chips - 1000) + " chips!");
@@ -125,7 +116,7 @@ public class Displayer {
 
             System.out.println(); // Print an empty line
 
-            displayWinAndLoseRounds(player); // Display win and lose rounds
+            displayPlayedRounds(player); // Display win and lose rounds
         }
     }
 
@@ -165,7 +156,7 @@ public class Displayer {
      * @param role The role of the recipient ("player" or "dealer").
      * @param card The card that was dealt.
      */
-    public static void displayCardDealed(String role, Card card) {
+    public static void displayCardDealed(Card card, String role) {
         if (role.equals("player")) {
             System.out.println("You got: " + card);
         } else {
@@ -215,13 +206,22 @@ public class Displayer {
     }
 
     /**
-     * Displays win and lose rounds for the player.
+     * Displays win, draw, and lose rounds for the player.
      * 
      * @param player The main player in the game.
      */
-    public static void displayWinAndLoseRounds(MainPlayer player) {
+    public static void displayPlayedRounds(MainPlayer player) {
         System.out.println("You won " + player.getWinRounds() + " rounds.");
         System.out.println("You lost " + player.getLoseRounds() + " rounds.");
         System.out.println("You drew " + player.getDrawRounds() + " rounds.");
+    }
+
+    /**
+     * Prints a separator line of a specified length.
+     * 
+     * @param length The length of the separator line.
+     */
+    public static void printBreakLine(int length) {
+        System.out.println("-".repeat(length));
     }
 }

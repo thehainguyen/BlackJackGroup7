@@ -86,15 +86,6 @@ public abstract class Player {
     }
 
     /**
-     * Adds the specified value to the player's score.
-     * 
-     * @param score The score to add to the player's current score.
-     */
-    public void addScore(int score) {
-        this.score += score;
-    }
-
-    /**
      * Resets the player's hand of cards and score. This method is used to prepare the player 
      * for a new round of the game.
      */
